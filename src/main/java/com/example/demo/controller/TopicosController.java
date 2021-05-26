@@ -32,6 +32,13 @@ public class TopicosController {
     @GetMapping(path = "/curso")
     public List<TopicoDto> listaTopicosCurso(String nome) {
         List<Topico> topicos = topicoRepository.findByCursoNome(nome);
+
+        /*
+         * Busca personalizada !
+         * List<Topico> carregarPorNomeDoCurso =
+         * topicoRepository.carregarPorNomeDoCurso(nome);
+         */
+
         return TopicoDto.converter(topicos);
 
     }
