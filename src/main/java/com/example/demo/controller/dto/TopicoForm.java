@@ -13,13 +13,18 @@ public class TopicoForm {
 
     
     @NotNull
-    @NotEmpty
+    @NotEmpty(message = "É necessario")
     @Length(min = 5, message = "O minimo e de 5")
     private String titulo;
 
     @NotNull
-    @NotEmpty
+    @NotEmpty(message = "É necessario")
+    @Length(min = 5, message = "O minimo e de 5")
     private String mensagem;
+
+    @NotNull
+    @NotEmpty(message = "É necessario")
+    @Length(min = 5, message = "O minimo e de 5")
     private String nomeCurso;
 
     public String getTitulo() {
