@@ -2,19 +2,20 @@ package com.example.demo.controller;
 
 import java.net.URI;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import com.example.demo.controller.dto.TopicoDto;
 import com.example.demo.controller.dto.TopicoForm;
 import com.example.demo.model.Topico;
 import com.example.demo.repository.CursoRepository;
 import com.example.demo.repository.TopicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -61,8 +62,7 @@ public class TopicosController {
     }
 
     @PostMapping
-
-    public ResponseEntity<TopicoDto> cadastrar(@RequestBody TopicoForm form, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<TopicoDto> cadastrar(@RequestBody @Valid TopicoForm form, UriComponentsBuilder uriBuilder) {
         Topico topico = form.converter(cursoRepository);
         topicoRepository.save(topico);
         URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();

@@ -1,9 +1,9 @@
-com\example\demo\controller\ClientIdRemote.class
 com\example\demo\DemoApplication.class
-com\example\demo\controller\TopicosController.class
 com\example\demo\model\Usuario.class
 com\example\demo\controller\dto\TopicoDto.class
 com\example\demo\model\Resposta.class
-com\example\demo\model\Topico.class
 com\example\demo\model\Curso.class
 com\example\demo\model\StatusTopico.class
+com\example\demo\controller\ClientIdRemote.class
+com\example\demo\controller\TopicosController.class
+com\example\demo\model\Topico.class

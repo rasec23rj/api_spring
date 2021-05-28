@@ -1,12 +1,24 @@
 package com.example.demo.controller.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.example.demo.model.Curso;
 import com.example.demo.model.Topico;
 import com.example.demo.repository.CursoRepository;
 
+import org.hibernate.validator.constraints.Length;
+
 public class TopicoForm {
 
+    
+    @NotNull
+    @NotEmpty
+    @Length(min = 5, message = "O minimo e de 5")
     private String titulo;
+
+    @NotNull
+    @NotEmpty
     private String mensagem;
     private String nomeCurso;
 
