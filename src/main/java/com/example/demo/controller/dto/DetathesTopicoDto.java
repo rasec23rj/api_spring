@@ -3,9 +3,7 @@ package com.example.demo.controller.dto;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
 import com.example.demo.model.StatusTopico;
 import com.example.demo.model.Topico;
 

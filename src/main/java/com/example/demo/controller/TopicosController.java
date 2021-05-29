@@ -3,8 +3,10 @@ package com.example.demo.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+import com.example.demo.controller.dto.AtualizarTopicoForm;
 import com.example.demo.controller.dto.DetathesTopicoDto;
 import com.example.demo.controller.dto.TopicoDto;
 import com.example.demo.controller.dto.TopicoForm;
@@ -16,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,7 +48,7 @@ public class TopicosController {
     }
 
     @GetMapping(path = "/{id}")
-    public DetathesTopicoDto detalhar(@PathVariable Long  id) {
+    public DetathesTopicoDto detalhar(@PathVariable Long id) {
         Topico topico = topicoRepository.findById(id).get();
         return new DetathesTopicoDto(topico);
 
@@ -68,6 +71,14 @@ public class TopicosController {
         topicoRepository.save(topico);
         URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
         return ResponseEntity.created(uri).body(new TopicoDto(topico));
+    }
+
+    @PutMapping(path = "/{id}")
+    @Transactional
+    public ResponseEntity<TopicoDto> update(@PathVariable Long id, @RequestBody @Valid AtualizarTopicoForm form,
+            UriComponentsBuilder uriBuilder) {
+        Topico topico = form.atualizar(id, topicoRepository);
+        return ResponseEntity.ok(new TopicoDto(topico));
     }
 
 }
