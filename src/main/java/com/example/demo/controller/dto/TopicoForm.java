@@ -11,7 +11,6 @@ import org.hibernate.validator.constraints.Length;
 
 public class TopicoForm {
 
-    
     @NotNull
     @NotEmpty(message = "É necessario")
     @Length(min = 5, message = "O minimo e de 5")
@@ -50,8 +49,19 @@ public class TopicoForm {
     public void setNomeCurso(String nomeCurso) {
         this.nomeCurso = nomeCurso;
     }
-    public Topico converter(CursoRepository repository){
+
+    public Topico converter(CursoRepository repository) {
         Curso curso = repository.findByNome(nomeCurso);
         return new Topico(titulo, mensagem, curso);
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " titulo='" + getTitulo() + "'" +
+            ", mensagem='" + getMensagem() + "'" +
+            ", nomeCurso='" + getNomeCurso() + "'" +
+            "}";
+    }
+
 }
