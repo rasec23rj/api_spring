@@ -51,6 +51,7 @@ public class TopicosController {
     @GetMapping(path = "/{id}")
     public DetathesTopicoDto detalhar(@PathVariable Long id) {
         Topico topico = topicoRepository.findById(id).get();
+        
         return new DetathesTopicoDto(topico);
 
     }
@@ -87,6 +88,6 @@ public class TopicosController {
     public ResponseEntity<?> remove(@PathVariable Long id) {
         topicoRepository.deleteById(id);
         return ResponseEntity.ok().build();
-        
+
     }
 }
