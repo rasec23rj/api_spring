@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.example.demo.controller.dto.DetathesTopicoDto;
 import com.example.demo.controller.dto.TopicoDto;
 import com.example.demo.controller.dto.TopicoForm;
 import com.example.demo.model.Topico;
@@ -13,6 +14,7 @@ import com.example.demo.repository.TopicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,11 +44,10 @@ public class TopicosController {
         }
     }
 
-    @GetMapping(path = "/ids/", params = "id" )
-    public List<TopicoDto> listaId(Long  id) {
-        System.out.println("id: " + id);
-        List<Topico> topicos = (List<Topico>) topicoRepository.findById(id).get();
-        return TopicoDto.converter(topicos);
+    @GetMapping(path = "/{id}")
+    public DetathesTopicoDto detalhar(@PathVariable Long  id) {
+        Topico topico = topicoRepository.findById(id).get();
+        return new DetathesTopicoDto(topico);
 
     }
 

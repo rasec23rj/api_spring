@@ -17,12 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/clientId")
 public class ClientIdRemote {
 
-    private String loopbackHost = "";
-    private String host = "";
-
-    private String loopbackIp = "";
-    private String ip = "";
-
     @GetMapping("")
     public String hello(HttpServletRequest request) throws UnknownHostException {
         String ipAddressX = request.getHeader("X-FORWARDED-FOR");

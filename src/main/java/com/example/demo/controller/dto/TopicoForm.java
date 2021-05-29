@@ -12,18 +12,18 @@ import org.hibernate.validator.constraints.Length;
 public class TopicoForm {
 
     @NotNull
-    @NotEmpty(message = "É necessario")
-    @Length(min = 5, message = "O minimo e de 5")
+    @NotEmpty
+    @Length(min = 5)
     private String titulo;
 
     @NotNull
-    @NotEmpty(message = "É necessario")
-    @Length(min = 5, message = "O minimo e de 5")
+    @NotEmpty
+    @Length(min = 5)
     private String mensagem;
 
     @NotNull
-    @NotEmpty(message = "É necessario")
-    @Length(min = 5, message = "O minimo e de 5")
+    @NotEmpty
+    @Length(min = 5)
     private String nomeCurso;
 
     public String getTitulo() {
