@@ -5,6 +5,8 @@ import javax.validation.constraints.NotNull;
 
 import com.example.demo.model.Curso;
 import com.example.demo.model.Topico;
+import com.example.demo.model.Usuario;
+import com.example.demo.repository.AutorRepository;
 import com.example.demo.repository.CursoRepository;
 
 import org.hibernate.validator.constraints.Length;
@@ -25,6 +27,7 @@ public class TopicoForm {
     @NotEmpty
     @Length(min = 5)
     private String nomeCurso;
+    private Integer idAutor;
 
     public String getTitulo() {
         return this.titulo;
@@ -50,9 +53,19 @@ public class TopicoForm {
         this.nomeCurso = nomeCurso;
     }
 
-    public Topico converter(CursoRepository repository) {
+    public Integer getIdAutor() {
+        return this.idAutor;
+    }
+
+    public void setIdAutor(Integer idAutor) {
+        this.idAutor = idAutor;
+    }
+
+    public Topico converter(CursoRepository repository, AutorRepository autorRepository) {
         Curso curso = repository.findByNome(nomeCurso);
-        return new Topico(titulo, mensagem, curso);
+        Usuario autor = autorRepository.findById(idAutor);
+
+        return new Topico(titulo, mensagem, curso, autor);
     }
 
     @Override

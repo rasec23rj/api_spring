@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import com.example.demo.model.Topico;
 
+import org.springframework.data.domain.Page;
+
 public class TopicoDto {
 
     private Long id;
@@ -42,8 +44,14 @@ public class TopicoDto {
 
     }
 
+     //Lista
     public static List<TopicoDto> converter(List<Topico> topicos) {
         return topicos.stream().map(TopicoDto::new).collect(Collectors.toList());
+    }
+
+    //Paginação
+    public static Page<TopicoDto> converterPaginacao(Page<Topico> topicos) {
+        return  topicos.map(TopicoDto::new);
     }
 
 }
