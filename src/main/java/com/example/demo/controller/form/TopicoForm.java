@@ -1,4 +1,4 @@
-package com.example.demo.controller.dto;
+package com.example.demo.controller.form;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -70,11 +70,8 @@ public class TopicoForm {
 
     @Override
     public String toString() {
-        return "{" +
-            " titulo='" + getTitulo() + "'" +
-            ", mensagem='" + getMensagem() + "'" +
-            ", nomeCurso='" + getNomeCurso() + "'" +
-            "}";
+        return "{" + " titulo='" + getTitulo() + "'" + ", mensagem='" + getMensagem() + "'" + ", nomeCurso='"
+                + getNomeCurso() + "'" + "}";
     }
 
 }

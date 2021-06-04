@@ -7,10 +7,10 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
-import com.example.demo.controller.dto.AtualizarTopicoForm;
 import com.example.demo.controller.dto.DetathesTopicoDto;
 import com.example.demo.controller.dto.TopicoDto;
-import com.example.demo.controller.dto.TopicoForm;
+import com.example.demo.controller.form.AtualizarTopicoForm;
+import com.example.demo.controller.form.TopicoForm;
 import com.example.demo.model.Topico;
 import com.example.demo.repository.AutorRepository;
 import com.example.demo.repository.CursoRepository;
@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
