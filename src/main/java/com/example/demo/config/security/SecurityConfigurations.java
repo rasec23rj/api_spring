@@ -21,11 +21,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private AuthenticationService authenticationService; 
-    
+    private AuthenticationService authenticationService;
+
     @Autowired
     private TokenService tokenService;
-    
+
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -44,21 +44,24 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
     // Confirurações de Atorização
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/topicos").permitAll()
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/topicos").permitAll()
                 .antMatchers(HttpMethod.GET, "/topicos/*").permitAll()
-                .antMatchers(HttpMethod.GET, "/h2-console").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
-                .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
-                .anyRequest().authenticated().and().csrf()
-                .disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .addFilterBefore(new AuthebticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
+                .antMatchers(HttpMethod.GET, "/actuator/**")
+                .permitAll().anyRequest().authenticated().and()
+                .csrf().disable().sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .addFilterBefore(new AuthebticacaoViaTokenFilter(tokenService, usuarioRepository),
+                        UsernamePasswordAuthenticationFilter.class);
 
     }
 
     // Confirurações de recursos estaticos(css, js. img)
     @Override
     public void configure(WebSecurity web) throws Exception {
+
+        web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**",
+                "/swagger-resources/**", "/h2-console/**", "/swagger-ui/**");
 
     }
 
