@@ -1,20 +1,39 @@
 # Api de Spring boot 
 ### Está api foi contruida seguindo o curso da alura sobre spring boot, esta com o banco de dados h2, spring security, swagger
 
+
+# Dependencias do projeto
+java 8
+
+Maven
+
 # Instalação via Eclipse
 
-<table>
-  <tr>
-     <td>Tela de eclipse, clicar em file e depois import</td>
-     <td>Importar projeto, procurar o maven e selecionar projeto existente</td>
-     <td>Selecionar o projeto baixado</td>
-     <td>Tela de concluir</td>
-  </tr>
-  <tr>
-    <td><img src="./eclipse-file.PNG" width=250 height=250></td>
-    <td><img src="./eclipse-import.PNG" width=250 height=250></td>
-    <td><img src="./eclipse-selecionar-projeto.PNG" width=250 height=250></td>
-	<td><img src="./eclipse-final.PNG" width=250 height=250></td>
+
+Tela inicial, clicar em file e depois import
+<hr><br>
+<img src="./eclipse-file.PNG">
+
+Importar projeto, procurar o maven e selecionar projeto existente
+<hr><br>
+<img src="./eclipse-import.PNG">
+
+Selecionar o projeto baixado
+<hr><br>
+<img src="./eclipse-selecionar-projeto.PNG" >
+
+Tela de concluir
+<hr><br>
+<img src="./eclipse-final.PNG" >
    
-  </tr>
- </table>
+
+ # Instalação via Visual Code
+
+Tela inicial, clicar em file e depois add folder to Workspace, selecione projeto baixado
+
+<img src="./vscode-file.PNG">
+
+<hr><br>
+Depois de adicionar o projeto, pode se baixar o plugin de spring-boot no vscode.
+<br><p><p />
+<img src="./vscode-final.PNG">
