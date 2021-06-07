@@ -3,9 +3,9 @@
 
 
 # Dependencias do projeto
-java 8
+java 8 - <a href="https://www.oracle.com/br/java/technologies/javase-jdk8-downloads.html">Java </a>
 
-Maven
+Maven - <a href="https://maven.apache.org">Maven </a>
 
 # Instalação via Eclipse
 
