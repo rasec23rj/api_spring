@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-@Entity
+@Entity(name="TOPICO")
 public class Topico {
 
 	@Id

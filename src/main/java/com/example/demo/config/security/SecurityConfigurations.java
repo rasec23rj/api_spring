@@ -47,8 +47,10 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/topicos").permitAll()
                 .antMatchers(HttpMethod.GET, "/topicos/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
-                .antMatchers(HttpMethod.GET, "/actuator/**")
-                .permitAll().anyRequest().authenticated().and()
+                .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
+                //no  MODERADOR o spring já coloca o ROLE_, no banco de dados tem que ter ROLE_NOME EXE: ROLE_MODERADOR
+                .antMatchers(HttpMethod.DELETE, "/topicos/*").hasAnyRole("MODERADOR")
+                .anyRequest().authenticated().and()
                 .csrf().disable().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .addFilterBefore(new AuthebticacaoViaTokenFilter(tokenService, usuarioRepository),
@@ -64,5 +66,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 "/swagger-resources/**", "/h2-console/**", "/swagger-ui/**");
 
     }
+    //gerar senha cryptografada
+    // public static void main(String[] args) {
+    //     System.out.println(new BCryptPasswordEncoder().encode("123456"));
+    // }
 
 }

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 import org.springframework.security.core.GrantedAuthority;
 
-@Entity
+@Entity(name="PERFIL")
 public class Perfil  implements GrantedAuthority {
     
     @Id
