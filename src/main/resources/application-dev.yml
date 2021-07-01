@@ -1,19 +1,27 @@
-
+server:
+    port: 8090
+    
 spring:
     datasource:
         url: jdbc:h2:~/forum
         driverClassName: org.h2.Driver
         username: sa
         password: 
+    devtools:
+        add-properties: true
     jpa:
         hibernate:            
             database-platform: org.hibernate.dialect.H2Dialect
             show-sql: true
-            ddl-auto: update
+            ddl-auto: none
     h2: 
         spring:
             h2-console-enabled: true
             h2-console-path: /h2-console
+
+    sql:
+        init:
+         enabled: false
     boot:
         admin:
             client:

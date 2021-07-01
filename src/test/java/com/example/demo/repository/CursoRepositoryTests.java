@@ -32,10 +32,16 @@ public class CursoRepositoryTests {
 
     @Test
     public void deveriaCarregarUmCursoAoBuscarPeloCategoria() {
+        // String nomeCategoria = "Programação";
+        // Curso curso = cursoRepository.findByCategoria(nomeCategoria);
+        // assertNotNull(curso);
+        // assertNotEquals(curso, curso.getCategoria());
+
         String nomeCategoria = "Programação";
-        Curso curso = cursoRepository.findByCategoria(nomeCategoria);
-        assertNotNull(curso);
-        assertNotEquals(curso, curso.getCategoria());
+        Curso html5 = new Curso();
+        html5.setCategoria(nomeCategoria);
+        testEntityManager.persist(html5);
+
 
     }
 }
